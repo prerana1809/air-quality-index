@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="icon" href="/static/icon2.png" type="image/x-icon"> 
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('/static/OIHDOI0.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: rgb(0, 0, 0);
+            text-align: center;
+        }
+
+        /* Container Styling - Reduced Width and More Margin */
+        .container {
+            max-width: 830px; /* Reduced width */
+            margin: 60px auto; /* Increased margin */
+            background: #f9f9f9;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+            opacity: 0.95;
+        }
+
+        /* Header Styling */
+        h1 {
+            color: #000000;
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        /* Subtitle Styling */
+        .subtitle {
+            font-size: 20px;
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #282827;
+        }
+
+        /* Content Styling - Adjusted Padding */
+        .content {
+            font-size: 18px;
+            line-height: 1.6;
+            text-align: justify;
+            color: #000000;
+            padding: 0 15px; /* Adjusted padding */
+        }
+
+        /* Models Container */
+        .models-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+            padding: 20px 0;
+        }
+
+        .model-row {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-bottom: 30px;
+        }
+
+        /* Flip Card */
+        .flip-card {
+    background-color: transparent;
+    width: 220px;
+    height: 220px;
+    perspective: 1000px;
+    cursor: pointer;
+    position: relative; /* Keep cards in place */
+    z-index: 1; /* Ensure it stays on top when flipped */
+}
+
+.flip-card-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    position: absolute; /* Keep the flip card in the same place */
+}
+
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+}
+
+/* Front and back color and text style */
+.flip-card-front {
+    background-color: #003366;
+    color: rgb(255, 255, 255);
+}
+
+.flip-card-back {
+    background-color: #4B6B8C;
+    transform: rotateY(180deg);
+    font-size: 16px;
+    text-align: center;
+    color: black;
+}
+
+.flip-card-front i {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.flip-card-front span {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* Ensures text is centered vertically */
+    width: 100%;  /* Ensures text is centered horizontally */
+    padding: 10px; /* Adds some spacing to prevent overflow */
+}
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 18px;
+            z-index: 2;
+        }
+
+        nav a {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            font-weight: bold;
+            background: rgba(90, 89, 89, 0.6);
+            padding: 10px 15px;
+            border-radius: 8px;
+        }
+
+        nav a:hover {
+            background: rgba(255, 239, 234, 0.651);
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .container {
+                width: 85%;
+            }
+
+            .model-row {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 30px;
+            }
+
+            .flip-card {
+                width: 200px;
+                height: 200px;
+            }
+
+            nav {
+                font-size: 16px;
+            }
+        }
+        .highlight {
+            color: #ff7300;
+            font-weight: bold;
+        }
+        h2 {
+            color: #003366;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        .info-box {
+            background-color: #f9f9f9;
+            border-left: 5px solid #4a90e2;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="/">Home</a>
+    </nav>
+
+    <!-- Main Content Section -->
+    <div class="container">
+        <h1>ABOUT</h1>
+        <p class="subtitle">Predicting the Air Quality Index</p>
+        
+        <div class="content">
+            <h2>Summary</h2>
+            <div class="info-box">
+                This project leverages regression techniques to predict AQI based on various weather parameters.
+                The system evaluates multiple models and selects the best one based on performance metrics such as:
+                Mean Absolute Error (MAE), Mean Squared Error (MSE), and R² score.
+            </div>
+            <h2>What is AQI?</h2>
+                <div class="info-box">
+                    <span class="highlight">Air Quality Index (AQI)</span> is a measure used to communicate how polluted the air is. 
+            
+                </div>
+                <h2>Weather parameters play a crucial role in determining AQI</h2>
+                <div class="info-box">
+                    
+                    <ul>
+                        <li><span class="highlight">Precipitation</span>: More rainfall generally improves air quality by washing away pollutants.</li>
+                        <li><span class="highlight">Temperature</span>: Higher temperatures can worsen air quality by increasing pollution-related chemical reactions.</li>
+                        <li><span class="highlight">Wind Speed</span>: Higher wind speeds improve air quality by dispersing pollutants.</li>
+                    </ul>
+                </div>
+            
+                    <h2>AQI Interpretation:</h2>
+                    <div class="info-box">
+                    <ul>
+                        <li><span class="highlight">0-10:</span> Good air quality, minimal pollution.</li>
+                        <li><span class="highlight">AQI>10:</span> Air quality is unhealthy, precautions needed.</li>
+                    </ul>
+                </div>
+                
+
+            <h3>Models Used:</h3>
+            <div class="models-container">
+                
+                <!-- First Row -->
+                <div class="model-row">
+                    <!-- Elastic Net -->
+                    <div class="flip-card" onclick="flipCard(this)">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <i class="fas fa-project-diagram"></i>
+                                <span>LSTM</span>
+                            </div>
+                            <div class="flip-card-back">
+                                Long short-term memory (LSTM) is a type of neural network that can process and remember information over multiple time steps.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- XGBoost -->
+                    <div class="flip-card" onclick="flipCard(this)">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <i class="fas fa-bolt"></i>
+                                <span>XGBoost Regressor</span>
+                            </div>
+                            <div class="flip-card-back">
+                                XGBoost is a powerful gradient boosting algorithm known for efficiency and accuracy in structured data.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SVR -->
+                    <div class="flip-card" onclick="flipCard(this)">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <i class="fas fa-chart-line"></i>
+                                <span>SVR</span>
+                            </div>
+                            <div class="flip-card-back">
+                                Support Vector Regressor (SVR) uses support vector machines to find the best-fit hyperplane for regression tasks.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Second Row -->
+                <div class="model-row">
+                    <!-- Random Forest -->
+                    <div class="flip-card" onclick="flipCard(this)">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <i class="fas fa-chart-line"></i>
+                                <span>RandomForest Regressor</span>
+                            </div>
+                            <div class="flip-card-back">
+                                Random Forest is an ensemble method that builds multiple decision trees and averages their outputs.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Linear Regression -->
+                    <div class="flip-card" onclick="flipCard(this)">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <i class="fas fa-ruler-combined"></i>
+                                <span>Linear Regression</span>
+                            </div>
+                            <div class="flip-card-back">
+                                Linear Regression establishes a relationship between dependent and independent variables using a straight line.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+    </script>
+
+</body>
+</html>
